@@ -17,7 +17,7 @@ Web: https://gracebilliris.github.io/somewhere/
 
 ## Current deployment status
 
-The existing Caffeine Committee Supabase public configuration was located, but its project host did not resolve during development. A public key cannot install database tables. Until a reachable project has the migration and seed installed, the website explicitly runs as a **local demo**.
+The existing Caffeine Committee Supabase public configuration was located, but its project host did not resolve during development. A public key cannot install database tables. This release intentionally runs as a **local demo** (`DATA_MODE=demo` in GitHub Actions variables), with no requests to the unavailable backend.
 
 The demo is not real authentication or a multi-user social service. All changes remain in this browser's IndexedDB. Public visibility previews do not publish local collections. Sharing your own local collection is deliberately blocked rather than generating a misleading link. Editorial collection links can be shared because they exist in the seed on every installation. Follows, likes and recommendations are not fabricated community activity.
 
@@ -57,7 +57,7 @@ Use the existing project or a new Supabase project. Do not put service-role keys
    - `http://127.0.0.1:5187/somewhere/`
      Avoid replacing an existing shared project's Site URL without considering its other apps.
 4. Configure production email delivery and appropriate signup rate limits in Supabase before a public launch. Default email limits are not suitable for a large consumer service.
-5. Set GitHub repository **Actions variables** `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`. Both are intentionally public client configuration. For local development set the corresponding `VITE_` variables in root `.env`.
+5. Set GitHub repository **Actions variables** `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`, then change `DATA_MODE` from `demo` to `auto`. The URL and publishable key are intentionally public client configuration. For local development set the corresponding `VITE_` variables in root `.env`. Use `VITE_DATA_MODE=demo` to force a fast, disconnected local demo even when public credentials are present.
 6. Push to `main` or run **Deploy Somewhere**. Verify that the local-demo banner is absent, then register two test users and check cross-device public sharing, follows, private collection isolation and image permissions.
 
 Authentication uses a namespaced session key, avoiding interference with other apps on the same GitHub Pages origin. Accounts already registered with the shared Supabase project can sign in; the `somewhere_ensure_profile` function creates only their Somewhere profile without altering their other data.

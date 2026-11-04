@@ -261,7 +261,9 @@ export default function App() {
           setBackendIssue(
             client
               ? "The configured Supabase project is unreachable or the Somewhere schema is not installed."
-              : "Supabase is not connected.",
+              : import.meta.env.VITE_DATA_MODE === "demo"
+                ? "This release is intentionally running as a local demo."
+                : "Supabase is not connected.",
           );
       }
       const snapshot = await chosen.load();

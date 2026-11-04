@@ -18,7 +18,7 @@ const tables = [
 const url = import.meta.env.VITE_SUPABASE_URL;
 const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 export const client: SupabaseClient | null =
-  url && key
+  url && key && import.meta.env.VITE_DATA_MODE !== "demo"
     ? createClient(url, key, {
         auth: {
           storageKey: "somewhere.auth.v1",

@@ -18,7 +18,12 @@ try {
   });
   const page = await context.newPage();
   const errors = [];
+  const backendRequests = [];
   page.on("pageerror", (e) => errors.push(e.message));
+  page.on("request", (request) => {
+    if (new URL(request.url()).hostname.endsWith(".supabase.co"))
+      backendRequests.push(request.url());
+  });
   const visit = async (route) => {
     await page.goto(`${base}#${route}`, { waitUntil: "networkidle" });
     await expect(page.locator("main")).toBeVisible();
@@ -28,6 +33,11 @@ try {
     "Honest local demo, real loaded photos and non-functional-cloud signup protection",
     async () => {
       await expect(page.locator(".demo-banner")).toContainText("Local demo");
+      assert.deepEqual(
+        backendRequests,
+        [],
+        "The approved local demo must not contact Supabase",
+      );
       await page.locator(".account-button").click();
       await expect(page.getByRole("dialog")).toContainText(
         "we won’t collect your email",
