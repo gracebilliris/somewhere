@@ -1,0 +1,636 @@
+{
+  "profiles": [
+    {
+      "id": "30000000-0000-4000-8000-000000000001",
+      "username": "the.slow.weekend",
+      "name": "The Slow Weekend",
+      "bio": "A Somewhere editorial guide to quieter corners, long walks and taking your time.",
+      "city": "Sydney",
+      "avatar": "",
+      "editorial": true
+    },
+    {
+      "id": "30000000-0000-4000-8000-000000000002",
+      "username": "table.for.everyone",
+      "name": "Table for Everyone",
+      "bio": "A Somewhere editorial guide to shared tables, easy evenings and good company.",
+      "city": "Sydney",
+      "avatar": "",
+      "editorial": true
+    },
+    {
+      "id": "30000000-0000-4000-8000-000000000003",
+      "username": "city.side.notes",
+      "name": "City Side Notes",
+      "bio": "A Somewhere editorial guide to art, architecture and the places between.",
+      "city": "Sydney",
+      "avatar": "",
+      "editorial": true
+    }
+  ],
+  "places": [
+    {
+      "id": "20000000-0000-4000-8000-000000000001",
+      "name": "Spice Alley",
+      "suburb": "Chippendale",
+      "category": "Food & drink",
+      "occasions": ["Date night", "Birthday dinner", "Hidden gems"],
+      "description": "Lanterns overhead, little kitchens all around. A casual laneway for choosing dinner together, one stall at a time.",
+      "address": "Kensington Street, Chippendale NSW 2008",
+      "latitude": -33.8855,
+      "longitude": 151.2015,
+      "website": "https://spice-alley.com.au/",
+      "city": "Sydney",
+      "photo": {
+        "src": "photos/spice-alley.webp",
+        "smallSrc": "photos/spice-alley-480.webp",
+        "width": 960,
+        "height": 1438,
+        "alt": "Red lanterns above the narrow dining laneway at Spice Alley, Chippendale.",
+        "title": "Going home gnangarra-51.jpg",
+        "author": "Gnangarra",
+        "source": "https://commons.wikimedia.org/wiki/File:Going_home_gnangarra-51.jpg",
+        "license": "CC BY 2.5 au",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.5/au/deed.en",
+        "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
+      }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000002",
+      "name": "Opera Bar",
+      "suburb": "Circular Quay",
+      "category": "Bars",
+      "occasions": ["After-work drinks", "Date night", "Birthday dinner"],
+      "description": "A drink beside the harbour, with the Opera House on one side and the bridge on the other. Plan ahead for busy evenings.",
+      "address": "Lower Concourse, Sydney Opera House, Sydney NSW 2000",
+      "latitude": -33.8572,
+      "longitude": 151.2142,
+      "website": "https://operabar.com.au/",
+      "city": "Sydney",
+      "photo": {
+        "src": "photos/opera-bar.webp",
+        "smallSrc": "photos/opera-bar-480.webp",
+        "alt": "Tables and visitors at Opera Bar beside Sydney Harbour.",
+        "author": "Alex Proimos from Sydney, Australia",
+        "source": "https://commons.wikimedia.org/wiki/File%3AOpera%20Bar%20(3401033971).jpg",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
+      }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000003",
+      "name": "Royal Botanic Garden",
+      "suburb": "Sydney",
+      "category": "Outdoors",
+      "occasions": ["Weekend wandering", "Family outings", "Date night"],
+      "description": "Take the long way through palms, garden paths and harbour lawns. Leave room in the afternoon for an unhurried picnic.",
+      "address": "Mrs Macquaries Road, Sydney NSW 2000",
+      "latitude": -33.8642,
+      "longitude": 151.2166,
+      "website": "https://www.botanicgardens.org.au/royal-botanic-garden-sydney",
+      "city": "Sydney",
+      "photo": {
+        "src": "photos/botanic-garden.webp",
+        "smallSrc": "photos/botanic-garden-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Succulents and mature trees in the Royal Botanic Garden, Sydney.",
+        "title": "Sydney (AU), Royal Botanic Gardens -- 2019 -- 3079.jpg",
+        "author": "Dietmar Rabich",
+        "source": "https://commons.wikimedia.org/wiki/File:Sydney_(AU),_Royal_Botanic_Gardens_--_2019_--_3079.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
+      }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000004",
+      "name": "White Rabbit Gallery & Tea House",
+      "suburb": "Chippendale",
+      "category": "Cafes",
+      "occasions": ["Coffee dates", "Hidden gems", "Weekend wandering"],
+      "description": "Contemporary Chinese art, then tea and a quiet conversation downstairs. The photograph shows the gallery exterior; check exhibition changeover dates.",
+      "address": "30 Balfour Street, Chippendale NSW 2008",
+      "latitude": -33.8875,
+      "longitude": 151.2006,
+      "website": "https://whiterabbitcollection.org/",
+      "city": "Sydney",
+      "photo": {
+        "src": "photos/white-rabbit.webp",
+        "smallSrc": "photos/white-rabbit-480.webp",
+        "width": 960,
+        "height": 720,
+        "alt": "The brick exterior of White Rabbit Gallery in Chippendale.",
+        "title": "White Rabbit gallery December 2025.jpg",
+        "author": "Nick-D",
+        "source": "https://commons.wikimedia.org/wiki/File:White_Rabbit_gallery_December_2025.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
+      }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000005",
+      "name": "Circular Quay promenade",
+      "suburb": "Circular Quay",
+      "category": "Attractions",
+      "occasions": ["Weekend wandering", "Family outings", "Date night"],
+      "description": "Ferries coming and going, a little sea air, and the city opening out around the water. A lovely meeting point before the rest of the day.",
+      "address": "Circular Quay, Sydney NSW 2000",
+      "latitude": -33.8609,
+      "longitude": 151.2121,
+      "website": "https://www.sydney.com/destinations/sydney/sydney-city/circular-quay",
+      "city": "Sydney",
+      "photo": {
+        "src": "photos/quay-promenade.webp",
+        "smallSrc": "photos/quay-promenade-480.webp",
+        "width": 960,
+        "height": 720,
+        "alt": "People walking along Circular Quay promenade beside Sydney Cove.",
+        "title": "AUS Sydney, Central Business District, Circular Quay 012.jpg",
+        "author": "-wuppertaler",
+        "source": "https://commons.wikimedia.org/wiki/File:AUS_Sydney,_Central_Business_District,_Circular_Quay_012.jpg",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
+      }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000006",
+      "name": "Observatory Hill Park",
+      "suburb": "The Rocks",
+      "category": "Outdoors",
+      "occasions": ["Hidden gems", "Date night", "Weekend wandering"],
+      "description": "A grassy hill, old trees and one of the city’s best bridge views. Bring a picnic rug and allow for uphill paths.",
+      "address": "Upper Fort Street, Millers Point NSW 2000",
+      "latitude": -33.8596,
+      "longitude": 151.2048,
+      "website": "https://www.cityofsydney.nsw.gov.au/parks/observatory-hill-park",
+      "city": "Sydney",
+      "photo": {
+        "src": "photos/observatory-hill.webp",
+        "smallSrc": "photos/observatory-hill-480.webp",
+        "width": 960,
+        "height": 540,
+        "alt": "Sydney Harbour Bridge and the harbour seen from Observatory Hill.",
+        "title": "View from Observatory Hill, Sydney (483413) (9443070588).jpg",
+        "author": "Robert Linsdell from St. Andrews, Canada",
+        "source": "https://commons.wikimedia.org/wiki/File:View_from_Observatory_Hill,_Sydney_(483413)_(9443070588).jpg",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
+      }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000007",
+      "name": "Darling Square",
+      "suburb": "Haymarket",
+      "category": "Food & drink",
+      "occasions": ["Birthday dinner", "Family outings", "After-work drinks"],
+      "description": "A whole neighbourhood of dining possibilities around The Exchange. Browse together, then choose a table that suits the group.",
+      "address": "Steam Mill Lane, Haymarket NSW 2000",
+      "latitude": -33.8771,
+      "longitude": 151.202,
+      "website": "https://www.darlingsq.com/",
+      "city": "Sydney",
+      "photo": {
+        "src": "photos/darling-square.webp",
+        "smallSrc": "photos/darling-square-480.webp",
+        "width": 960,
+        "height": 720,
+        "alt": "The illuminated Exchange building and dining precinct at Darling Square.",
+        "title": "Darling Square Sydney.jpg",
+        "author": "MDRX",
+        "source": "https://commons.wikimedia.org/wiki/File:Darling_Square_Sydney.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
+      }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000008",
+      "name": "Art Gallery of New South Wales",
+      "suburb": "Sydney",
+      "category": "Art & culture",
+      "occasions": ["Weekend wandering", "Family outings", "Date night"],
+      "description": "Let a favourite painting decide the pace. Explore the collection, the architecture and the paths towards the harbour.",
+      "address": "Art Gallery Road, Sydney NSW 2000",
+      "latitude": -33.8688,
+      "longitude": 151.2173,
+      "website": "https://www.artgallery.nsw.gov.au/",
+      "city": "Sydney",
+      "photo": {
+        "src": "photos/art-gallery.webp",
+        "smallSrc": "photos/art-gallery-480.webp",
+        "width": 960,
+        "height": 540,
+        "alt": "The columned entrance to the Art Gallery of New South Wales.",
+        "title": "Sydney (AU), Art Gallery of New South Wales -- 2019 -- 3103.jpg",
+        "author": "Dietmar Rabich",
+        "source": "https://commons.wikimedia.org/wiki/File:Sydney_(AU),_Art_Gallery_of_New_South_Wales_--_2019_--_3103.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
+      }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000009",
+      "name": "Barangaroo Reserve",
+      "suburb": "Barangaroo",
+      "category": "Outdoors",
+      "occasions": ["Weekend wandering", "Family outings", "Hidden gems"],
+      "description": "Sandstone edges, native planting and a waterfront walk made for slowing down. Bring water and sun protection.",
+      "address": "Hickson Road, Barangaroo NSW 2000",
+      "latitude": -33.8587,
+      "longitude": 151.2019,
+      "website": "https://www.barangaroo.com/see-and-do/barangaroo-reserve",
+      "city": "Sydney",
+      "photo": {
+        "src": "photos/barangaroo-reserve.webp",
+        "smallSrc": "photos/barangaroo-reserve-480.webp",
+        "width": 960,
+        "height": 720,
+        "alt": "Grassy lawns, waterfront paths and trees at Barangaroo Reserve.",
+        "title": "AUS Sydney, Central Business District, Barangaroo Reserve 022.jpg",
+        "author": "-wuppertaler",
+        "source": "https://commons.wikimedia.org/wiki/File:AUS_Sydney,_Central_Business_District,_Barangaroo_Reserve_022.jpg",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
+      }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000010",
+      "name": "Chinese Garden of Friendship",
+      "suburb": "Darling Harbour",
+      "category": "Attractions",
+      "occasions": ["Date night", "Hidden gems", "Family outings"],
+      "description": "Step away from the city into pavilions, winding paths and koi ponds. A small, thoughtful escape; admission charges apply.",
+      "address": "Pier Street, Darling Harbour NSW 2000",
+      "latitude": -33.8764,
+      "longitude": 151.2024,
+      "website": "https://www.darlingharbour.com/see-and-do/chinese-garden-of-friendship",
+      "city": "Sydney",
+      "photo": {
+        "src": "photos/chinese-garden.webp",
+        "smallSrc": "photos/chinese-garden-480.webp",
+        "width": 960,
+        "height": 720,
+        "alt": "A pavilion, pond and rocks in the Chinese Garden of Friendship.",
+        "title": "2022-10-15 Chinese Garden of Friendship, Sydney 3.jpg",
+        "author": "Maksym Kozlenko",
+        "source": "https://commons.wikimedia.org/wiki/File:2022-10-15_Chinese_Garden_of_Friendship,_Sydney_3.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
+      }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000011",
+      "name": "Queen Victoria Building",
+      "suburb": "Sydney",
+      "category": "Shopping",
+      "occasions": ["Weekend wandering", "Coffee dates", "Places to try"],
+      "description": "Look up at the clocks and stained glass before exploring the arcades. Make an afternoon of browsing and a tea stop.",
+      "address": "455 George Street, Sydney NSW 2000",
+      "latitude": -33.8718,
+      "longitude": 151.2067,
+      "website": "https://www.qvb.com.au/",
+      "city": "Sydney",
+      "photo": {
+        "src": "photos/qvb.webp",
+        "smallSrc": "photos/qvb-480.webp",
+        "alt": "The ornate interior and Royal Clock of the Queen Victoria Building in Sydney.",
+        "author": "Kgbo",
+        "source": "https://commons.wikimedia.org/wiki/File%3AInterior%20of%20Queen%20Victoria%20Building%20with%20Royal%20Clock%2C%20Sydney%2002.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
+      }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000012",
+      "name": "Museum of Contemporary Art Australia",
+      "suburb": "The Rocks",
+      "category": "Art & culture",
+      "occasions": ["Date night", "Weekend wandering", "Coffee dates"],
+      "description": "Harbourside contemporary art with plenty to talk about afterwards. Check current exhibition access and ticket conditions.",
+      "address": "140 George Street, The Rocks NSW 2000",
+      "latitude": -33.8599,
+      "longitude": 151.209,
+      "website": "https://www.mca.com.au/",
+      "city": "Sydney",
+      "photo": {
+        "src": "photos/mca.webp",
+        "smallSrc": "photos/mca-480.webp",
+        "width": 960,
+        "height": 540,
+        "alt": "The sandstone facade of the Museum of Contemporary Art Australia.",
+        "title": "The Museum of Contemporary Art, Sydney (former MSB Building).jpg",
+        "author": "Briandhana Krishnatirta Kusaditya",
+        "source": "https://commons.wikimedia.org/wiki/File:The_Museum_of_Contemporary_Art,_Sydney_(former_MSB_Building).jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
+      }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000013",
+      "name": "Paddy’s Markets Haymarket",
+      "suburb": "Haymarket",
+      "category": "Shopping",
+      "occasions": ["Family outings", "Weekend wandering", "Hidden gems"],
+      "description": "Browse the covered stalls for a small find or something unexpected. Trading days vary, so check before setting out.",
+      "address": "9–13 Hay Street, Haymarket NSW 2000",
+      "latitude": -33.8792,
+      "longitude": 151.2035,
+      "website": "https://paddysmarkets.com.au/",
+      "city": "Sydney",
+      "photo": {
+        "src": "photos/paddys-markets.webp",
+        "smallSrc": "photos/paddys-markets-480.webp",
+        "width": 960,
+        "height": 720,
+        "alt": "The Market City entrance above Paddy's Markets in Haymarket.",
+        "title": "Haymarket Market City entrance.JPG",
+        "author": "J Bar",
+        "source": "https://commons.wikimedia.org/wiki/File:Haymarket_Market_City_entrance.JPG",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
+      }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000014",
+      "name": "Hyde Park",
+      "suburb": "Sydney",
+      "category": "Outdoors",
+      "occasions": ["Weekend wandering", "Family outings", "Coffee dates"],
+      "description": "A shady pause beneath the fig trees, right in the middle of town. Pair a slow walk with something from a nearby cafe.",
+      "address": "Elizabeth Street, Sydney NSW 2000",
+      "latitude": -33.8731,
+      "longitude": 151.2113,
+      "website": "https://www.cityofsydney.nsw.gov.au/parks/hyde-park",
+      "city": "Sydney",
+      "photo": {
+        "src": "photos/hyde-park.webp",
+        "smallSrc": "photos/hyde-park-480.webp",
+        "width": 960,
+        "height": 720,
+        "alt": "A shaded, tree-lined path through Hyde Park in central Sydney.",
+        "title": "AUS Sydney, Central Business District, Hyde Park 020.jpg",
+        "author": "-wuppertaler",
+        "source": "https://commons.wikimedia.org/wiki/File:AUS_Sydney,_Central_Business_District,_Hyde_Park_020.jpg",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
+      }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000015",
+      "name": "State Library of New South Wales",
+      "suburb": "Sydney",
+      "category": "Art & culture",
+      "occasions": ["Hidden gems", "Weekend wandering"],
+      "description": "Reading rooms, sandstone and changing displays. An easy way to turn an ordinary lunch break into a little discovery.",
+      "address": "1 Shakespeare Place, Sydney NSW 2000",
+      "latitude": -33.8662,
+      "longitude": 151.2128,
+      "website": "https://www.sl.nsw.gov.au/",
+      "city": "Sydney",
+      "photo": {
+        "src": "photos/state-library.webp",
+        "smallSrc": "photos/state-library-480.webp",
+        "width": 960,
+        "height": 507,
+        "alt": "The sandstone Mitchell and Dixson wings of the State Library of New South Wales.",
+        "title": "Mitchell and Dixson wings, State Library of New South Wales, 2023.jpg",
+        "author": "Geoff Barker",
+        "source": "https://commons.wikimedia.org/wiki/File:Mitchell_and_Dixson_wings,_State_Library_of_New_South_Wales,_2023.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
+      }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000016",
+      "name": "Pyrmont Bridge",
+      "suburb": "Darling Harbour",
+      "category": "Attractions",
+      "occasions": ["Weekend wandering", "Family outings", "Date night"],
+      "description": "Walk across the harbour on a historic swing bridge. Come back after dark to see the waterfront in a different light.",
+      "address": "Pyrmont Bridge, Darling Harbour NSW 2000",
+      "latitude": -33.8705,
+      "longitude": 151.2013,
+      "website": "https://www.darlingharbour.com/see-and-do/pyrmont-bridge",
+      "city": "Sydney",
+      "photo": {
+        "src": "photos/pyrmont-bridge.webp",
+        "smallSrc": "photos/pyrmont-bridge-480.webp",
+        "width": 960,
+        "height": 720,
+        "alt": "The pedestrian Pyrmont Bridge crossing Darling Harbour.",
+        "title": "Pyrmont Bridge February 2014.jpg",
+        "author": "Nick-D",
+        "source": "https://commons.wikimedia.org/wiki/File:Pyrmont_Bridge_February_2014.jpg",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
+      }
+    }
+  ],
+  "collections": [
+    {
+      "id": "40000000-0000-4000-8000-000000000001",
+      "owner_id": "30000000-0000-4000-8000-000000000002",
+      "name": "A little after-hours magic",
+      "description": "Lantern-lit dinner, a harbour drink, and absolutely no rush to head home.",
+      "occasion": "Date night",
+      "cover": "place:20000000-0000-4000-8000-000000000001",
+      "visibility": "public",
+      "created_at": "2026-10-26T09:00:00Z"
+    },
+    {
+      "id": "40000000-0000-4000-8000-000000000002",
+      "owner_id": "30000000-0000-4000-8000-000000000001",
+      "name": "The art of a slow Sunday",
+      "description": "A few leafy corners for days when the only plan is to take your time.",
+      "occasion": "Weekend wandering",
+      "cover": "place:20000000-0000-4000-8000-000000000003",
+      "visibility": "public",
+      "created_at": "2026-10-25T09:00:00Z"
+    },
+    {
+      "id": "40000000-0000-4000-8000-000000000003",
+      "owner_id": "30000000-0000-4000-8000-000000000002",
+      "name": "Another year, another good table",
+      "description": "Low-pressure ideas for getting your favourite people together.",
+      "occasion": "Birthday dinner",
+      "cover": "place:20000000-0000-4000-8000-000000000007",
+      "visibility": "public",
+      "created_at": "2026-10-24T09:00:00Z"
+    },
+    {
+      "id": "40000000-0000-4000-8000-000000000004",
+      "owner_id": "30000000-0000-4000-8000-000000000003",
+      "name": "For the wonderfully curious",
+      "description": "Gallery afternoons, quiet reading rooms and a tea break worth lingering over.",
+      "occasion": "Hidden gems",
+      "cover": "place:20000000-0000-4000-8000-000000000004",
+      "visibility": "public",
+      "created_at": "2026-10-23T09:00:00Z"
+    },
+    {
+      "id": "40000000-0000-4000-8000-000000000005",
+      "owner_id": "30000000-0000-4000-8000-000000000001",
+      "name": "Little city adventures",
+      "description": "Easy places to explore with the whole crew, from gardens to harbour crossings.",
+      "occasion": "Family outings",
+      "cover": "place:20000000-0000-4000-8000-000000000005",
+      "visibility": "public",
+      "created_at": "2026-10-22T09:00:00Z"
+    },
+    {
+      "id": "40000000-0000-4000-8000-000000000006",
+      "owner_id": "30000000-0000-4000-8000-000000000003",
+      "name": "Coffee, conversation & a detour",
+      "description": "Tea, a gallery, a little window shopping. An afternoon without a clock.",
+      "occasion": "Coffee dates",
+      "cover": "place:20000000-0000-4000-8000-000000000004",
+      "visibility": "public",
+      "created_at": "2026-10-21T09:00:00Z"
+    }
+  ],
+  "collection_places": [
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000001",
+      "place_id": "20000000-0000-4000-8000-000000000001",
+      "position": 0,
+      "note": "Go early, wander the laneway and let everyone pick a kitchen."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000001",
+      "place_id": "20000000-0000-4000-8000-000000000002",
+      "position": 1,
+      "note": "Check the venue’s current hours before planning a sunset drink."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000001",
+      "place_id": "20000000-0000-4000-8000-000000000016",
+      "position": 2,
+      "note": "A lovely way to stretch out the evening."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000002",
+      "place_id": "20000000-0000-4000-8000-000000000003",
+      "position": 0,
+      "note": "Start with the gardens while the paths are quiet."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000002",
+      "place_id": "20000000-0000-4000-8000-000000000006",
+      "position": 1,
+      "note": "Bring a rug and find your patch of grass."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000002",
+      "place_id": "20000000-0000-4000-8000-000000000009",
+      "position": 2,
+      "note": "Follow the water rather than a timetable."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000002",
+      "place_id": "20000000-0000-4000-8000-000000000014",
+      "position": 3,
+      "note": "Finish beneath the fig trees."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000003",
+      "place_id": "20000000-0000-4000-8000-000000000007",
+      "position": 0,
+      "note": "A dining precinct, not a single restaurant: agree on a venue before the day."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000003",
+      "place_id": "20000000-0000-4000-8000-000000000001",
+      "position": 1,
+      "note": "A casual birthday option for a group happy to try different kitchens."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000003",
+      "place_id": "20000000-0000-4000-8000-000000000002",
+      "position": 2,
+      "note": "Check group arrangements directly with the venue."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000004",
+      "place_id": "20000000-0000-4000-8000-000000000004",
+      "position": 0,
+      "note": "Leave time for tea after the exhibition. Check opening days."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000004",
+      "place_id": "20000000-0000-4000-8000-000000000008",
+      "position": 1,
+      "note": "Choose one part of the collection and really spend time with it."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000004",
+      "place_id": "20000000-0000-4000-8000-000000000015",
+      "position": 2,
+      "note": "Look for the current public displays."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000004",
+      "place_id": "20000000-0000-4000-8000-000000000012",
+      "position": 3,
+      "note": "Check current tickets before your visit."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000005",
+      "place_id": "20000000-0000-4000-8000-000000000005",
+      "position": 0,
+      "note": "Watch the ferries from the promenade."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000005",
+      "place_id": "20000000-0000-4000-8000-000000000010",
+      "position": 1,
+      "note": "Check entry fees and bring a little patience for winding paths."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000005",
+      "place_id": "20000000-0000-4000-8000-000000000016",
+      "position": 2,
+      "note": "A good harbour crossing between stops."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000005",
+      "place_id": "20000000-0000-4000-8000-000000000013",
+      "position": 3,
+      "note": "Check market trading days before promising a treasure hunt."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000006",
+      "place_id": "20000000-0000-4000-8000-000000000004",
+      "position": 0,
+      "note": "The tea house is inside the gallery building shown."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000006",
+      "place_id": "20000000-0000-4000-8000-000000000011",
+      "position": 1,
+      "note": "Browse the arcades; choose a current tea or coffee venue on arrival."
+    },
+    {
+      "collection_id": "40000000-0000-4000-8000-000000000006",
+      "place_id": "20000000-0000-4000-8000-000000000014",
+      "position": 2,
+      "note": "Bring your coffee and find a bench under the trees."
+    }
+  ],
+  "saved_places": [],
+  "follows": [],
+  "likes": []
+}
