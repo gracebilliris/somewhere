@@ -13,6 +13,7 @@ Web: https://gracebilliris.github.io/somewhere/
 - Six collections from three explicitly labelled editorial guides, and 16 real Sydney places with local, credited photographs.
 - Location, category and occasion filters, place details, official websites, directions and opt-in OpenStreetMap.
 - Persistent IndexedDB local demo; Supabase email/password registration, sign-in, email confirmation, recovery, profiles, relational data and private image storage when connected.
+- Installable PWA with iPhone home-screen icons, offline app/photographs/seed data, and a confirmed update flow that preserves saved guidebooks.
 - Private-by-default collections, backend-enforced ownership and access policies, keyboard-accessible dialogs, responsive navigation and empty/error/loading states.
 
 ## Current deployment status
@@ -44,6 +45,33 @@ BASE_URL=http://127.0.0.1:5187/somewhere/ npm run test:browser
 ```
 
 Hash routes work on refresh and in shared links under GitHub Pages without server rewrites. Photos, seed data and JavaScript are served from the configured repository base path.
+
+## Install on your phone
+
+Open https://gracebilliris.github.io/somewhere/ online first and let offline setup finish.
+
+- **iPhone/iPad:** open in Safari, tap **Share → Add to Home Screen**, enable **Open as Web App** if shown, then **Add**. Launch Somewhere from the new icon.
+- **Android/desktop Chrome or Edge:** use **Install app** in Somewhere if the browser offers an installer, or the browser's install icon/menu. Installation availability depends on the browser.
+
+The app opens in a standalone window. The app shell, all 16 Sydney places, their local photos and the seed are precached. In local-demo mode you can reopen it offline, browse places, create/edit collections and save favourites. Maps, external websites, cloud accounts and sharing to external services still need internet. Installation is not an App Store release and does not enable accounts or syncing.
+
+Local data may not carry across automatically from Safari tabs into an iPhone home-screen installation, depending on iOS/browser storage behaviour. Install first before building your main guidebook; keep a JSON backup of existing browser data. The app does not promise permanent device storage. Clearing browser/app data or removing the installation may remove local guidebooks.
+
+Updates show a prompt instead of silently reloading while you edit. Confirming an update reloads the app; saved IndexedDB data is preserved, but unsaved text is not. The service worker and caches are restricted to `/somewhere/` and do not cache Supabase/authentication responses, other apps, maps or external websites.
+
+PWA behaviour is tested against production assets, not the Vite development server:
+
+```sh
+npm run build
+npm run test:pwa
+# Starts a temporary local static server and checks offline/update behaviour.
+# To check the deployed site (without the local simulated update):
+BASE_URL=https://gracebilliris.github.io/somewhere/ npm run test:pwa
+```
+
+Icons can be regenerated with `node scripts/build-icons.mjs`.
+
+Workbox's build-only `glob` and `deepmerge` dependencies have scoped/package overrides to avoid upstream dependency advisories. Recheck these overrides when updating Workbox.
 
 ## Backend setup
 

@@ -1624,6 +1624,84 @@ footer button {
 .avatar.small img {
   border-radius: 50%;
 }
+.pwa-banner,
+.pwa-status {
+  margin: 14px 44px 0;
+  padding: 13px 16px;
+  border: 1px solid #dfe5d6;
+  border-radius: 9px;
+  background: #eef1e6;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: #64745b;
+}
+.pwa-banner > div:first-of-type {
+  flex: 1;
+  min-width: 0;
+}
+.pwa-banner strong {
+  font-size: 12px;
+  font-weight: 500;
+}
+.pwa-banner p,
+.pwa-status {
+  font-size: 10px;
+  line-height: 1.7;
+}
+.pwa-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.pwa-actions .button {
+  padding: 10px 13px;
+}
+.update-banner {
+  background: #e5eddd;
+}
+@media (max-width: 1200px) {
+  .pwa-banner,
+  .pwa-status {
+    margin-inline: 28px;
+  }
+}
+@media (max-width: 760px) {
+  .pwa-banner,
+  .pwa-status {
+    margin-inline: 22px;
+  }
+}
+@media (max-width: 540px) {
+  .pwa-banner,
+  .pwa-status {
+    margin: 12px 19px 0;
+    padding: 12px;
+    gap: 10px;
+  }
+  .pwa-banner {
+    flex-wrap: wrap;
+  }
+  .pwa-banner > div:first-of-type {
+    flex-basis: calc(100% - 34px);
+  }
+  .pwa-actions {
+    margin-left: 30px;
+  }
+  .pwa-banner strong {
+    font-size: 11px;
+  }
+  .pwa-banner p {
+    font-size: 10px;
+  }
+}
+@media (max-width: 359px) {
+  .pwa-banner,
+  .pwa-status {
+    margin-inline: 14px;
+  }
+}
 @keyframes loading {
   to {
     background-position: 200% 0;

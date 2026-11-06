@@ -57,6 +57,7 @@ import {
   type Repository,
 } from "./repository";
 import { Avatar, Cover, Modal, Photo } from "./ui";
+import PwaControls from "./PwaControls";
 
 type Dialog =
   | { kind: "collection"; collection?: Collection }
@@ -1332,6 +1333,10 @@ export default function App() {
               </button>
             </div>
           )}
+          <PwaControls
+            localDemo={repo.mode === "demo"}
+            blocked={busy || dialog !== null}
+          />
           <main id="main-content" tabIndex={-1}>
             {page}
             <footer>

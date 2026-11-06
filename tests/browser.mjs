@@ -13,6 +13,8 @@ const check = async (label, run) => {
 };
 try {
   const context = await browser.newContext({
+    // Offline caching has its own suite; route-abort fault injection must reach the network.
+    serviceWorkers: "block",
     viewport: { width: 1440, height: 1000 },
     permissions: ["clipboard-read", "clipboard-write"],
   });
@@ -149,7 +151,7 @@ try {
         .first()
         .getByRole("button", { name: "Save note" })
         .click();
-      await expect(page.getByRole("status")).toContainText(
+      await expect(page.locator(".toast[role=status]")).toContainText(
         "Recommendation saved.",
       );
       await page.reload({ waitUntil: "networkidle" });
@@ -189,7 +191,7 @@ try {
         /^data:image\/jpeg/,
       );
       await page.getByRole("button", { name: "Share", exact: true }).click();
-      await expect(page.getByRole("status")).toContainText(
+      await expect(page.locator(".toast[role=status]")).toContainText(
         "local to your device",
       );
       await page.reload({ waitUntil: "networkidle" });
