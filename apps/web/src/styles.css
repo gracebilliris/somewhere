@@ -1343,6 +1343,11 @@ footer button {
   background: #dce4cd;
   color: #8d9d7c;
 }
+.photo-fallback {
+  padding: 20px;
+  text-align: center;
+  color: #435b48;
+}
 .cover-placeholder > span,
 .photo-fallback > span {
   font:

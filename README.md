@@ -10,7 +10,7 @@ Web: https://gracebilliris.github.io/somewhere/
 - Collection creation, editing, covers, custom ordering, recommendation notes and confirmed deletion.
 - Save one place into multiple collections and independently into private favourites.
 - Follow/unfollow guides; like/unlike collections; share published public collections using native sharing or clipboard.
-- Six collections from three explicitly labelled editorial guides, and 40 real Sydney places with local, credited photographs: harbour sights, pubs, dining venues, museums, markets, gardens and activities.
+- Six collections from three explicitly labelled editorial guides, and 42 real Sydney places: harbour sights, pubs, dining venues, museums, markets, gardens and activities. Forty have local, credited photographs; two CBD venues have a clearly labelled photo-unavailable state.
 - Location, category and occasion filters, place details, official websites, directions and opt-in OpenStreetMap.
 - Persistent IndexedDB local demo; Supabase email/password registration, sign-in, email confirmation, recovery, profiles, relational data and private image storage when connected.
 - Installable PWA with iPhone home-screen icons, offline app/photographs/seed data, and a confirmed update flow that preserves saved guidebooks.
@@ -48,13 +48,17 @@ Hash routes work on refresh and in shared links under GitHub Pages without serve
 
 ## Sydney catalogue
 
-The catalogue includes six additional pubs/bars (The Glenmore, Australian Heritage Hotel, Lord Nelson, Hero of Waterloo, The Orient and Coogee Bay Hotel), four dining destinations (Bathers' Pavilion, Harry's Woolloomooloo, Doyles on the Beach and Watsons Bay Boutique Hotel), and activities including Luna Park, Taronga Zoo, SEA LIFE and Bondi Icebergs. Museums, gardens, markets, beaches and Cockatoo Island round out the 40 places.
+The catalogue includes six additional pubs/bars (The Glenmore, Australian Heritage Hotel, Lord Nelson, Hero of Waterloo, The Orient and Coogee Bay Hotel), four dining destinations (Bathers' Pavilion, Harry's Woolloomooloo, Doyles on the Beach and Watsons Bay Boutique Hotel), and activities including Luna Park, Taronga Zoo, SEA LIFE and Bondi Icebergs. Museums, gardens, markets and beaches are joined by **Osteria Luna** (the official spelling) and **Dean & Nancy on 22**, bringing the catalogue to 42 places.
+
+The two new venues can be found using the **Sydney CBD** location filter. Official details: [Osteria Luna](https://osterialuna.sydney/) is beneath The Charles at 68 King Street; [Dean & Nancy on 22](https://www.deanandnancyon22.com.au/contact) is at A by Adina Sydney, level 22, 2 Hunter Street. Map positions were cross-checked against their matching public Apple Maps listings ([Osteria](https://maps.apple.com/place?place-id=I2539F08F7A84B348), [Dean & Nancy](https://maps.apple.com/place?place-id=I536721DFC7FA677B)). Their photos are intentionally unavailable until reusable venue photography is verified; no stock interiors or photos of other venues are substituted.
 
 Use Explore's category, suburb/city and occasion filters to narrow the list. The Activities category groups the amusement park, zoo, aquarium and ocean pool. Website links point to the venue/operator; check current opening hours, prices, bookings and conditions there. Venue images are genuine, openly licensed photographs, not necessarily recent photographs or pictures of current menus.
 
 Existing local guidebooks merge new catalogue places on startup without replacing profiles, collections, notes, ordering, favourites, follows or likes. If the catalogue cannot be fetched, an existing guidebook still opens. Installed PWA users should apply the offered app update and reopen it to receive the new cached catalogue. The Supabase seed is generated alongside the browser catalogue; apply the updated seed when connecting a cloud backend.
 
 To extend the catalogue, append entries to `scripts/build-seed.mjs`, add the credited photographs to `content/photos.json` and `apps/web/public/photos/`, then run `node scripts/build-seed.mjs`. Do not reorder existing rows: their positions determine stable place IDs.
+
+If no reusable photograph has been verified, record an explicit `null` in `content/photos.json`; the UI displays a labelled unavailable state and no licence is fabricated.
 
 ## Install on your phone
 
@@ -63,7 +67,7 @@ Open https://gracebilliris.github.io/somewhere/ online first and let offline set
 - **iPhone/iPad:** open in Safari, tap **Share → Add to Home Screen**, enable **Open as Web App** if shown, then **Add**. Launch Somewhere from the new icon.
 - **Android/desktop Chrome or Edge:** use **Install app** in Somewhere if the browser offers an installer, or the browser's install icon/menu. Installation availability depends on the browser.
 
-The app opens in a standalone window. The app shell, all 40 Sydney places, their local photos and the seed are precached. In local-demo mode you can reopen it offline, browse places, create/edit collections and save favourites. Maps, external websites, cloud accounts and sharing to external services still need internet. Installation is not an App Store release and does not enable accounts or syncing.
+The app opens in a standalone window. The app shell, all 42 Sydney places, all available local photos and the seed are precached. In local-demo mode you can reopen it offline, browse places, create/edit collections and save favourites. Maps, external websites, cloud accounts and sharing to external services still need internet. Installation is not an App Store release and does not enable accounts or syncing.
 
 Local data may not carry across automatically from Safari tabs into an iPhone home-screen installation, depending on iOS/browser storage behaviour. Install first before building your main guidebook; keep a JSON backup of existing browser data. The app does not promise permanent device storage. Clearing browser/app data or removing the installation may remove local guidebooks.
 

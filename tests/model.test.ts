@@ -175,6 +175,7 @@ describe("guidebook workflows", () => {
       "Bathers' Pavilion",
       "Doyles on the Beach",
       "Watsons Bay Boutique Hotel",
+      "Osteria Luna",
     ]);
     expect(
       searchPlaces(

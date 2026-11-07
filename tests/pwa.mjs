@@ -238,14 +238,13 @@ try {
     },
   );
   await check(
-    "Every catalogue place and both photographic sizes are usable offline, with persistent saves",
+    "Catalogue places and all available photographs work offline, with persistent saves",
     async () => {
       const results = await page.evaluate(async (base) => {
         const seed = await (await fetch(`${base}data/seed.json`)).json();
-        const photos = seed.places.flatMap((place) => [
-          place.photo.src,
-          place.photo.smallSrc,
-        ]);
+        const photos = seed.places.flatMap((place) =>
+          place.photo.src ? [place.photo.src, place.photo.smallSrc] : [],
+        );
         const loaded = await Promise.all(
           photos.map(
             (src) =>
@@ -265,7 +264,7 @@ try {
       }, base);
       assert.deepEqual(results, {
         count: catalogue.places.length,
-        photos: catalogue.places.length * 2,
+        photos: catalogue.places.filter((place) => place.photo.src).length * 2,
         allLoaded: true,
       });
       const newest = catalogue.places.at(-1);

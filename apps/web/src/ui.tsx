@@ -13,10 +13,12 @@ export function Photo({
   className?: string;
 }) {
   const [failed, setFailed] = useState(false);
-  return failed ? (
+  return failed || !place.photo.src ? (
     <div className={`photo-fallback ${className}`}>
       <ImageOff />
-      <span>{place.name}</span>
+      <span>
+        {place.photo.src ? place.name : "Venue photo not yet available"}
+      </span>
     </div>
   ) : (
     <img

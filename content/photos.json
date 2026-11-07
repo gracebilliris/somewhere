@@ -500,6 +500,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
   },
+  "osteria-luna": null,
+  "dean-nancy": null,
   "camp-cove": {
     "src": "photos/camp-cove.webp",
     "smallSrc": "photos/camp-cove-480.webp",

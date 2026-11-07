@@ -1062,6 +1062,50 @@
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
         "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
       }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000041",
+      "name": "Osteria Luna",
+      "suburb": "Sydney CBD",
+      "category": "Food & drink",
+      "occasions": ["Date night", "Birthday dinner", "After-work drinks"],
+      "description": "An underground Italian restaurant beneath The Charles Brasserie & Bar, with pasta, cocktails and a musical side. Check the current lunch, dinner and late-night programme before booking.",
+      "address": "Basement, 68 King Street, Sydney NSW 2000",
+      "latitude": -33.8684667,
+      "longitude": 151.2064392,
+      "website": "https://osterialuna.sydney/",
+      "city": "Sydney",
+      "photo": {
+        "src": "",
+        "smallSrc": "",
+        "alt": "Osteria Luna: venue photo not yet available",
+        "author": "",
+        "source": "",
+        "license": "",
+        "licenseUrl": ""
+      }
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000042",
+      "name": "Dean & Nancy on 22",
+      "suburb": "Sydney CBD",
+      "category": "Bars",
+      "occasions": ["Date night", "After-work drinks", "Birthday dinner"],
+      "description": "Cocktails and dining above the CBD on level 22 of A by Adina Sydney. Plan a sunset catch-up or an evening out, and check current bookings and entry conditions with the venue.",
+      "address": "Level 22, A by Adina Sydney, 2 Hunter Street, Sydney NSW 2000",
+      "latitude": -33.8653794,
+      "longitude": 151.2074682,
+      "website": "https://www.deanandnancyon22.com.au/",
+      "city": "Sydney",
+      "photo": {
+        "src": "",
+        "smallSrc": "",
+        "alt": "Dean & Nancy on 22: venue photo not yet available",
+        "author": "",
+        "source": "",
+        "license": "",
+        "licenseUrl": ""
+      }
     }
   ],
   "collections": [

@@ -832,11 +832,17 @@ export default function App() {
           <div className="place-portrait">
             <Photo place={p} eager />
             <div className="photo-credit">
-              Photo: {p.photo.author} ·{" "}
-              <a href={p.photo.source} target="_blank" rel="noreferrer">
-                {p.photo.license}
-                <ExternalLink size={10} />
-              </a>
+              {p.photo.src ? (
+                <>
+                  Photo: {p.photo.author} ·{" "}
+                  <a href={p.photo.source} target="_blank" rel="noreferrer">
+                    {p.photo.license}
+                    <ExternalLink size={10} />
+                  </a>
+                </>
+              ) : (
+                "No verified venue photograph is available yet."
+              )}
             </div>
           </div>
           <div className="place-detail-copy">
@@ -1502,24 +1508,32 @@ export default function App() {
                 Real photographs of the named places, resized and
                 WebP-compressed; cropped in the interface. Images are licensed
                 individually below. No photograph is a promise of current venue
-                conditions.
+                conditions. Where no venue photo has been verified, we show a
+                clearly labelled unavailable state rather than an unrelated
+                image.
               </p>
-              {data.places.map((p) => (
-                <div className="credit-row" key={p.id}>
-                  <strong>{p.name}</strong>
+              {data.places.map(({ id, name, photo }) => (
+                <div className="credit-row" key={id}>
+                  <strong>{name}</strong>
                   <span>
-                    {p.photo.author} ·{" "}
-                    <a href={p.photo.source} target="_blank" rel="noreferrer">
-                      Original
-                    </a>{" "}
-                    ·{" "}
-                    <a
-                      href={p.photo.licenseUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {p.photo.license}
-                    </a>
+                    {photo.src ? (
+                      <>
+                        {photo.author} ·{" "}
+                        <a href={photo.source} target="_blank" rel="noreferrer">
+                          Original
+                        </a>{" "}
+                        ·{" "}
+                        <a
+                          href={photo.licenseUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {photo.license}
+                        </a>
+                      </>
+                    ) : (
+                      "Venue photo not yet available; no stock image is used."
+                    )}
                   </span>
                 </div>
               ))}

@@ -489,6 +489,30 @@ const rows = [
     151.27919,
     "https://www.nationalparks.nsw.gov.au/visit-a-park/parks/sydney-harbour-national-park",
   ],
+  [
+    "osteria-luna",
+    "Osteria Luna",
+    "Sydney CBD",
+    "Food & drink",
+    ["Date night", "Birthday dinner", "After-work drinks"],
+    "An underground Italian restaurant beneath The Charles Brasserie & Bar, with pasta, cocktails and a musical side. Check the current lunch, dinner and late-night programme before booking.",
+    "Basement, 68 King Street, Sydney NSW 2000",
+    -33.8684667,
+    151.2064392,
+    "https://osterialuna.sydney/",
+  ],
+  [
+    "dean-nancy",
+    "Dean & Nancy on 22",
+    "Sydney CBD",
+    "Bars",
+    ["Date night", "After-work drinks", "Birthday dinner"],
+    "Cocktails and dining above the CBD on level 22 of A by Adina Sydney. Plan a sunset catch-up or an evening out, and check current bookings and entry conditions with the venue.",
+    "Level 22, A by Adina Sydney, 2 Hunter Street, Sydney NSW 2000",
+    -33.8653794,
+    151.2074682,
+    "https://www.deanandnancyon22.com.au/",
+  ],
 ];
 const places = rows.map(
   (
@@ -517,17 +541,26 @@ const places = rows.map(
     longitude,
     website,
     city: "Sydney",
-    photo: photos[slug],
+    // Keep the photo object shape compatible with already-open app versions.
+    photo:
+      photos[slug] === null
+        ? {
+            src: "",
+            smallSrc: "",
+            alt: `${name}: venue photo not yet available`,
+            author: "",
+            source: "",
+            license: "",
+            licenseUrl: "",
+          }
+        : photos[slug],
   }),
 );
-for (const place of places) {
-  if (
-    !place.photo?.src ||
-    !place.photo?.smallSrc ||
-    !place.photo?.author ||
-    !place.photo?.source
-  )
-    throw new Error(`Missing credited photograph for ${place.name}`);
+for (const [slug, name] of rows) {
+  const photo = photos[slug];
+  if (photo === null) continue;
+  if (!photo?.src || !photo?.smallSrc || !photo?.author || !photo?.source)
+    throw new Error(`Missing credited photograph for ${name}`);
 }
 const profiles = [
   {

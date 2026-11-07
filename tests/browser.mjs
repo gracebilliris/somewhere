@@ -478,6 +478,56 @@ try {
     },
   );
   await check(
+    "Requested CBD venues have correct details, honest photo states and persistent collection saves",
+    async () => {
+      for (const name of ["Osteria Luna", "Dean & Nancy on 22"]) {
+        const venue = catalogue.places.find((place) => place.name === name);
+        await visit("/explore");
+        await page.getByLabel("Filter by location").selectOption("Sydney CBD");
+        await expect(page.locator(".place-card")).toHaveCount(2);
+        await page
+          .getByLabel("Search places, collections and people")
+          .fill(name);
+        await expect(page.locator(".place-card")).toHaveCount(1);
+        await page.getByRole("link", { name, exact: true }).click();
+        await expect(
+          page.getByRole("heading", { name, exact: true }),
+        ).toBeVisible();
+        await expect(page.locator(".address-block")).toContainText(
+          venue.address,
+        );
+        await expect(
+          page.getByRole("link", { name: "Visit website" }),
+        ).toHaveAttribute("href", venue.website);
+        await expect(
+          page.locator(".place-portrait .photo-fallback"),
+        ).toContainText("Venue photo not yet available");
+        await expect(page.locator(".place-portrait img")).toHaveCount(0);
+        await expect(page.locator(".photo-credit a")).toHaveCount(0);
+        await page
+          .getByRole("button", { name: "Save to your guidebook" })
+          .click();
+        const modal = page.getByRole("dialog");
+        await modal.getByLabel(/Birthday shortlist, sorted/).check();
+        await modal.getByLabel(/Saved for later/).check();
+        await modal.getByRole("button", { name: "Save your choices" }).click();
+        await expect(modal).toHaveCount(0);
+      }
+      await visit(`/collection/${firstId}`);
+      await page.reload({ waitUntil: "networkidle" });
+      for (const name of ["Osteria Luna", "Dean & Nancy on 22"])
+        await expect(
+          page.locator(".stop").filter({ hasText: name }),
+        ).toHaveCount(1);
+      await visit("/explore");
+      await page.getByLabel("Filter by location").selectOption("Sydney CBD");
+      await page.screenshot({
+        path: "artifacts/cbd-venues.png",
+        fullPage: true,
+      });
+    },
+  );
+  await check(
     "Responsive pages at 320, 390, 768 and 1440px with no horizontal overflow or broken photos",
     async () => {
       for (const width of [320, 390, 768, 1440]) {
