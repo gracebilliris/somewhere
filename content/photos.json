@@ -500,8 +500,32 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "modifications": "Resized and WebP-compressed; cropped to fit in the interface."
   },
-  "osteria-luna": null,
-  "dean-nancy": null,
+  "osteria-luna": {
+    "src": "photos/osteria-luna.webp",
+    "smallSrc": "photos/osteria-luna-480.webp",
+    "width": 960,
+    "height": 1120,
+    "alt": "The Charles street-level facade at 68 King Street, above Osteria Luna, photographed in December 2023; not the underground restaurant interior.",
+    "title": "The Charles facade at Osteria Luna's host building, December 2023",
+    "author": "jakecopp / Mapillary",
+    "source": "https://www.mapillary.com/app/?pKey=1336550490336004&focus=photo",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "Cropped to the host-building facade, resized and WebP-compressed; cropped further to fit in the interface."
+  },
+  "dean-nancy": {
+    "src": "photos/dean-nancy.webp",
+    "smallSrc": "photos/dean-nancy-480.webp",
+    "width": 698,
+    "height": 1260,
+    "alt": "Street-level exterior detail and 280 street number outside A by Adina Sydney on George Street, photographed in October 2022; Dean & Nancy's level 22 bar is not pictured.",
+    "title": "A by Adina Sydney street-level exterior detail, October 2022",
+    "author": "jakecopp / Mapillary",
+    "source": "https://www.mapillary.com/app/?pKey=1534702923653571&focus=photo",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "Cropped to an exterior detail of the host hotel, resized and WebP-compressed; cropped further to fit in the interface."
+  },
   "camp-cove": {
     "src": "photos/camp-cove.webp",
     "smallSrc": "photos/camp-cove-480.webp",

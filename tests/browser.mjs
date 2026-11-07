@@ -478,7 +478,7 @@ try {
     },
   );
   await check(
-    "Requested CBD venues have correct details, honest photo states and persistent collection saves",
+    "Requested CBD venues have credited building photos, honest captions and persistent collection saves",
     async () => {
       for (const name of ["Osteria Luna", "Dean & Nancy on 22"]) {
         const venue = catalogue.places.find((place) => place.name === name);
@@ -499,11 +499,23 @@ try {
         await expect(
           page.getByRole("link", { name: "Visit website" }),
         ).toHaveAttribute("href", venue.website);
-        await expect(
-          page.locator(".place-portrait .photo-fallback"),
-        ).toContainText("Venue photo not yet available");
-        await expect(page.locator(".place-portrait img")).toHaveCount(0);
-        await expect(page.locator(".photo-credit a")).toHaveCount(0);
+        const photo = page.locator(".place-portrait img");
+        await expect(photo).toHaveAttribute("alt", venue.photo.alt);
+        await expect
+          .poll(() =>
+            photo.evaluate((img) => img.complete && img.naturalWidth > 0),
+          )
+          .toBe(true);
+        await expect(page.locator(".photo-credit")).toContainText(
+          "jakecopp / Mapillary",
+        );
+        await expect(page.locator(".photo-credit a")).toHaveAttribute(
+          "href",
+          venue.photo.source,
+        );
+        await expect(page.locator(".detail-description")).toContainText(
+          /not the (restaurant|bar) interior/,
+        );
         await page
           .getByRole("button", { name: "Save to your guidebook" })
           .click();

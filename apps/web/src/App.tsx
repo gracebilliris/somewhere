@@ -1505,12 +1505,12 @@ export default function App() {
               </p>
               <h3>Photography</h3>
               <p>
-                Real photographs of the named places, resized and
-                WebP-compressed; cropped in the interface. Images are licensed
-                individually below. No photograph is a promise of current venue
-                conditions. Where no venue photo has been verified, we show a
-                clearly labelled unavailable state rather than an unrelated
-                image.
+                Real photographs of the named places or clearly identified
+                host-building details, cropped, resized and WebP-compressed.
+                Images are licensed individually below. No photograph is a
+                promise of current venue conditions. Where no venue photo has
+                been verified, we show a clearly labelled unavailable state
+                rather than an unrelated image.
               </p>
               {data.places.map(({ id, name, photo }) => (
                 <div className="credit-row" key={id}>
