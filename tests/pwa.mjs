@@ -9,6 +9,12 @@ const dist = resolve(
   fileURLToPath(new URL("../apps/web/dist/", import.meta.url)),
 );
 const prefix = "/somewhere/";
+const catalogue = JSON.parse(
+  await readFile(
+    new URL("../apps/web/public/data/seed.json", import.meta.url),
+    "utf8",
+  ),
+);
 let version = 1;
 let server;
 let base = process.env.BASE_URL;
@@ -176,6 +182,35 @@ try {
         page.getByRole("heading", { name: "Offline weekend" }),
       ).toBeVisible();
       collectionUrl = page.url();
+      await page.evaluate(
+        () =>
+          new Promise((resolve, reject) => {
+            const open = indexedDB.open("somewhere-guidebook-v1", 1);
+            open.onsuccess = () => {
+              const db = open.result;
+              const tx = db.transaction("guidebook", "readwrite");
+              const store = tx.objectStore("guidebook");
+              const request = store.get("snapshot");
+              request.onsuccess = () =>
+                store.put(
+                  {
+                    ...request.result,
+                    places: request.result.places.slice(0, 16),
+                  },
+                  "snapshot",
+                );
+              tx.oncomplete = () => {
+                resolve();
+                db.close();
+              };
+              tx.onerror = () => {
+                reject(tx.error);
+                db.close();
+              };
+            };
+            open.onerror = () => reject(open.error);
+          }),
+      );
       await context.setOffline(true);
       await page.reload({ waitUntil: "networkidle" });
       await expect(
@@ -203,7 +238,7 @@ try {
     },
   );
   await check(
-    "All 16 places and 32 real photos are usable offline, with persistent saves",
+    "Every catalogue place and both photographic sizes are usable offline, with persistent saves",
     async () => {
       const results = await page.evaluate(async (base) => {
         const seed = await (await fetch(`${base}data/seed.json`)).json();
@@ -228,7 +263,16 @@ try {
           allLoaded: loaded.every(Boolean),
         };
       }, base);
-      assert.deepEqual(results, { count: 16, photos: 32, allLoaded: true });
+      assert.deepEqual(results, {
+        count: catalogue.places.length,
+        photos: catalogue.places.length * 2,
+        allLoaded: true,
+      });
+      const newest = catalogue.places.at(-1);
+      await page.goto(`${base}#/place/${newest.id}`);
+      await expect(
+        page.getByRole("heading", { name: newest.name, exact: true }),
+      ).toBeVisible();
       await page.goto(`${base}#/place/20000000-0000-4000-8000-000000000001`);
       await expect(
         page.getByRole("heading", { name: "Spice Alley", exact: true }),

@@ -1,6 +1,13 @@
 import { chromium, expect } from "@playwright/test";
 import assert from "node:assert/strict";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
+
+const catalogue = JSON.parse(
+  await readFile(
+    new URL("../apps/web/public/data/seed.json", import.meta.url),
+    "utf8",
+  ),
+);
 
 const base = process.env.BASE_URL || "http://127.0.0.1:5186/somewhere/";
 await mkdir("artifacts", { recursive: true });
@@ -260,7 +267,9 @@ try {
       await page.getByRole("button", { name: "Reset", exact: true }).click();
       await page.getByRole("tab", { name: /places/i }).click();
       await page.getByLabel("Filter by category").selectOption("Bars");
-      await expect(page.locator(".place-card")).toHaveCount(1);
+      await expect(page.locator(".place-card")).toHaveCount(
+        catalogue.places.filter((place) => place.category === "Bars").length,
+      );
       await page.getByRole("button", { name: "Save Opera Bar" }).click();
       await page.getByRole("button", { name: "Close dialog" }).click();
       await expect(page.getByLabel("Filter by category")).toHaveValue("Bars");
@@ -358,6 +367,117 @@ try {
     },
   );
   await check(
+    "Existing guidebooks receive new places without losing personal data, even if a later refresh fails",
+    async () => {
+      const snapshot = () =>
+        page.evaluate(
+          () =>
+            new Promise((resolve, reject) => {
+              const open = indexedDB.open("somewhere-guidebook-v1", 1);
+              open.onerror = () => reject(open.error);
+              open.onsuccess = () => {
+                const db = open.result;
+                const request = db
+                  .transaction("guidebook", "readonly")
+                  .objectStore("guidebook")
+                  .get("snapshot");
+                request.onsuccess = () => {
+                  resolve(request.result);
+                  db.close();
+                };
+                request.onerror = () => {
+                  reject(request.error);
+                  db.close();
+                };
+              };
+            }),
+        );
+      const before = await snapshot();
+      await page.evaluate(
+        (data) =>
+          new Promise((resolve, reject) => {
+            const open = indexedDB.open("somewhere-guidebook-v1", 1);
+            open.onsuccess = () => {
+              const db = open.result;
+              const tx = db.transaction("guidebook", "readwrite");
+              tx.objectStore("guidebook").put(
+                { ...data, places: data.places.slice(0, 16) },
+                "snapshot",
+              );
+              tx.oncomplete = () => {
+                resolve();
+                db.close();
+              };
+              tx.onerror = () => {
+                reject(tx.error);
+                db.close();
+              };
+            };
+            open.onerror = () => reject(open.error);
+          }),
+        before,
+      );
+      await page.reload({ waitUntil: "networkidle" });
+      await expect(page.locator("main")).toBeVisible();
+      const updated = await snapshot();
+      assert.equal(updated.places.length, catalogue.places.length);
+      assert.deepEqual({ ...updated, places: [] }, { ...before, places: [] });
+      await page.route("**/data/seed.json", (route) => route.abort());
+      await page.reload({ waitUntil: "networkidle" });
+      await expect(page.locator("main")).toBeVisible();
+      assert.deepEqual(await snapshot(), updated);
+      await page.unroute("**/data/seed.json");
+    },
+  );
+  await check(
+    "Discover activities and save a newly added place into an existing collection",
+    async () => {
+      await visit("/explore");
+      await page.getByLabel("Filter by category").selectOption("Activities");
+      await expect(page.locator(".place-card")).toHaveCount(
+        catalogue.places.filter((place) => place.category === "Activities")
+          .length,
+      );
+      await page
+        .getByLabel("Search places, collections and people")
+        .fill("Luna Park");
+      await expect(page.locator(".place-card")).toHaveCount(1);
+      await page
+        .getByRole("link", { name: "Luna Park Sydney", exact: true })
+        .click();
+      await expect(
+        page.getByRole("heading", { name: "Luna Park Sydney", exact: true }),
+      ).toBeVisible();
+      await expect
+        .poll(() =>
+          page
+            .locator(".place-portrait img")
+            .evaluate((img) => img.complete && img.naturalWidth > 0),
+        )
+        .toBe(true);
+      await page
+        .getByRole("button", { name: "Save to your guidebook" })
+        .click();
+      const modal = page.getByRole("dialog");
+      await modal.getByLabel(/Birthday shortlist, sorted/).check();
+      await modal.getByLabel(/Saved for later/).check();
+      await modal.getByRole("button", { name: "Save your choices" }).click();
+      await expect(modal).toHaveCount(0);
+      await visit(`/collection/${firstId}`);
+      await expect(
+        page.locator(".stop").filter({ hasText: "Luna Park Sydney" }),
+      ).toHaveCount(1);
+      await page.reload({ waitUntil: "networkidle" });
+      await expect(
+        page.locator(".stop").filter({ hasText: "Luna Park Sydney" }),
+      ).toHaveCount(1);
+      await page.screenshot({
+        path: "artifacts/expanded-guidebook.png",
+        fullPage: true,
+      });
+    },
+  );
+  await check(
     "Responsive pages at 320, 390, 768 and 1440px with no horizontal overflow or broken photos",
     async () => {
       for (const width of [320, 390, 768, 1440]) {
@@ -415,7 +535,9 @@ try {
           exact: true,
         })
         .click();
-      await expect(page.locator(".credit-row")).toHaveCount(16);
+      await expect(page.locator(".credit-row")).toHaveCount(
+        catalogue.places.length,
+      );
       const download = page.waitForEvent("download");
       await page
         .getByRole("button", { name: "Download your guidebook backup" })

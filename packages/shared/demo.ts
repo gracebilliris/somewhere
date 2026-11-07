@@ -20,6 +20,20 @@ export type Action =
       input: ProfileInput;
     };
 
+export function refreshPlaces(
+  source: Snapshot,
+  catalogue: Pick<Snapshot, "places">,
+): Snapshot {
+  const ids = new Set(catalogue.places.map((place) => place.id));
+  return {
+    ...source,
+    places: [
+      ...catalogue.places,
+      ...source.places.filter((place) => !ids.has(place.id)),
+    ],
+  };
+}
+
 export function applyAction(
   source: Snapshot,
   action: Action,

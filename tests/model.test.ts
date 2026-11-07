@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import seed from "../apps/web/public/data/seed.json";
-import { applyAction } from "../packages/shared/demo";
+import { applyAction, refreshPlaces } from "../packages/shared/demo";
 import {
   collectionInput,
   DEMO_USER,
@@ -24,6 +24,41 @@ const privateCollection: Collection = {
   created_at: "2026-11-04T00:00:00Z",
 };
 describe("guidebook workflows", () => {
+  it("refreshes an older place catalogue without changing personal guidebooks", () => {
+    const source = initial();
+    source.places = source.places.slice(0, 16);
+    source.collections.push(privateCollection);
+    source.saved_places.push({
+      user_id: DEMO_USER,
+      place_id: source.places[0].id,
+    });
+    source.collection_places.push({
+      collection_id: privateCollection.id,
+      place_id: source.places[0].id,
+      position: 0,
+      note: "Keep my own recommendation.",
+    });
+    const original = structuredClone(source);
+    const catalogue = initial();
+    catalogue.places[0].description = "Updated editorial information.";
+    const updated = refreshPlaces(source, catalogue);
+    expect(updated.places).toEqual(catalogue.places);
+    const { places: oldPlaces, ...personal } = source;
+    const { places: newPlaces, ...retained } = updated;
+    expect(newPlaces.length).toBeGreaterThan(oldPlaces.length);
+    expect(retained).toEqual(personal);
+    expect(source).toEqual(original);
+    expect(refreshPlaces(updated, catalogue)).toEqual(updated);
+  });
+  it("retains previously saved places absent from a later catalogue", () => {
+    const source = initial();
+    const olderPlace = { ...source.places[0], id: "previously-curated" };
+    source.places.push(olderPlace);
+    source.saved_places.push({ user_id: DEMO_USER, place_id: olderPlace.id });
+    const updated = refreshPlaces(source, initial());
+    expect(updated.places.at(-1)).toEqual(olderPlace);
+    expect(updated.saved_places).toEqual(source.saved_places);
+  });
   it("saves one place in multiple collections and preserves independent favourites", () => {
     let data = initial();
     data.collections.push(privateCollection, {
@@ -134,7 +169,26 @@ describe("guidebook workflows", () => {
         "Birthday dinner",
         "Sydney",
       ).map((p) => p.name),
-    ).toEqual(["Spice Alley", "Darling Square"]);
+    ).toEqual([
+      "Spice Alley",
+      "Darling Square",
+      "Bathers' Pavilion",
+      "Doyles on the Beach",
+      "Watsons Bay Boutique Hotel",
+    ]);
+    expect(
+      searchPlaces(
+        places,
+        "family outings",
+        "Activities",
+        "Family outings",
+        "Sydney",
+      ).map((place) => place.name),
+    ).toEqual([
+      "Luna Park Sydney",
+      "Taronga Zoo Sydney",
+      "SEA LIFE Sydney Aquarium",
+    ]);
     expect(
       searchPlaces(
         places,

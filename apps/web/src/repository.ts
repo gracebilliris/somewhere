@@ -1,5 +1,9 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { applyAction, type Action } from "../../../packages/shared/demo";
+import {
+  applyAction,
+  refreshPlaces,
+  type Action,
+} from "../../../packages/shared/demo";
 import {
   DEMO_USER,
   profileInput,
@@ -57,25 +61,44 @@ export async function demoRepository(): Promise<Repository> {
       request.onsuccess = () => resolve(request.result);
       request.onerror = () => reject(request.error);
     });
-  if (!(await read())) {
+  const existing = await read();
+  let catalogue: Snapshot | undefined;
+  try {
     const response = await fetch(`${import.meta.env.BASE_URL}data/seed.json`);
-    if (!response.ok)
+    if (!response.ok) throw new Error("Catalogue unavailable.");
+    catalogue = await response.json();
+  } catch {
+    if (!existing)
       throw new Error(
         "The place guide could not load. Check your connection and retry.",
       );
-    const data: Snapshot = await response.json();
-    data.profiles.push({
-      id: DEMO_USER,
-      username: "your.local.guide",
-      name: "Your little corner",
-      bio: "A growing collection of places to go, things to try, and afternoons to remember.",
-      city: "Sydney",
-      avatar: "",
-      editorial: false,
-    });
+  }
+  if (catalogue) {
+    const seed = catalogue;
     await new Promise<void>((resolve, reject) => {
       const tx = db.transaction("guidebook", "readwrite");
-      tx.objectStore("guidebook").put(data, "snapshot");
+      const store = tx.objectStore("guidebook");
+      const request = store.get("snapshot");
+      request.onsuccess = () => {
+        const data: Snapshot = request.result
+          ? refreshPlaces(request.result, seed)
+          : {
+              ...seed,
+              profiles: [
+                ...seed.profiles,
+                {
+                  id: DEMO_USER,
+                  username: "your.local.guide",
+                  name: "Your little corner",
+                  bio: "A growing collection of places to go, things to try, and afternoons to remember.",
+                  city: "Sydney",
+                  avatar: "",
+                  editorial: false,
+                },
+              ],
+            };
+        store.put(data, "snapshot");
+      };
       tx.oncomplete = () => resolve();
       tx.onerror = () =>
         reject(

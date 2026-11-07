@@ -102,6 +102,7 @@ export const categories = [
   "Bars",
   "Cafes",
   "Art & culture",
+  "Activities",
   "Outdoors",
   "Shopping",
   "Attractions",
