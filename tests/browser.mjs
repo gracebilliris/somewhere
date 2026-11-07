@@ -528,6 +528,84 @@ try {
     },
   );
   await check(
+    "Cross-Sydney additions have real credited photos, usable filters, accurate access notes and persistent saves",
+    async () => {
+      const additions = catalogue.places.slice(42);
+      assert.equal(additions.length, 12);
+      const saved = [
+        "The Bank Hotel",
+        "Chat Thai — Thaitown",
+        "Bicentennial Park",
+      ];
+      for (const venue of additions) {
+        await visit("/explore");
+        await page.getByLabel("Filter by location").selectOption(venue.suburb);
+        await page
+          .getByLabel("Filter by category")
+          .selectOption(venue.category);
+        await page
+          .getByLabel("Filter by occasion")
+          .selectOption(venue.occasions[0]);
+        await page
+          .getByLabel("Search places, collections and people")
+          .fill(venue.name);
+        await expect(page.locator(".place-card")).toHaveCount(1);
+        await page.getByRole("link", { name: venue.name, exact: true }).click();
+        await expect(
+          page.getByRole("heading", { name: venue.name, exact: true }),
+        ).toBeVisible();
+        await expect(page.locator(".address-block")).toContainText(
+          venue.address,
+        );
+        await expect(
+          page.getByRole("link", { name: "Visit website" }),
+        ).toHaveAttribute("href", venue.website);
+        await expect(page.locator(".photo-credit")).toContainText(
+          venue.photo.author,
+        );
+        await expect(page.locator(".photo-credit a")).toHaveAttribute(
+          "href",
+          venue.photo.source,
+        );
+        await expect
+          .poll(() =>
+            page
+              .locator(".place-portrait img")
+              .evaluate((img) => img.complete && img.naturalWidth > 0),
+          )
+          .toBe(true);
+        if (venue.name === "Wylie's Baths") {
+          await expect(page.locator(".place-detail-copy")).toContainText(
+            "pool and downstairs access are closed for wall repairs",
+          );
+        }
+        if (saved.includes(venue.name)) {
+          await page
+            .getByRole("button", { name: "Save to your guidebook" })
+            .click();
+          const modal = page.getByRole("dialog");
+          await modal.getByLabel(/Birthday shortlist, sorted/).check();
+          await modal.getByLabel(/Saved for later/).check();
+          await modal
+            .getByRole("button", { name: "Save your choices" })
+            .click();
+          await expect(modal).toHaveCount(0);
+        }
+      }
+      await visit(`/collection/${firstId}`);
+      await page.reload({ waitUntil: "networkidle" });
+      for (const name of saved) {
+        await expect(
+          page.locator(".stop").filter({ hasText: name }),
+        ).toHaveCount(1);
+      }
+      await page.screenshot({
+        path: "artifacts/cross-sydney-guidebook.png",
+        fullPage: true,
+      });
+    },
+  );
+  await check(
     "Responsive pages at 320, 390, 768 and 1440px with no horizontal overflow or broken photos",
     async () => {
       for (const width of [320, 390, 768, 1440]) {

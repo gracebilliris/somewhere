@@ -272,6 +272,15 @@ try {
       await expect(
         page.getByRole("heading", { name: newest.name, exact: true }),
       ).toBeVisible();
+      for (const pending of catalogue.places.filter(
+        (place) => !place.photo.src,
+      )) {
+        await page.goto(`${base}#/place/${pending.id}`);
+        await expect(
+          page.locator(".place-portrait .photo-fallback"),
+        ).toContainText("Venue photo not yet available");
+        await expect(page.locator(".place-portrait img")).toHaveCount(0);
+      }
       await page.goto(`${base}#/place/20000000-0000-4000-8000-000000000001`);
       await expect(
         page.getByRole("heading", { name: "Spice Alley", exact: true }),

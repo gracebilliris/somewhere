@@ -176,6 +176,8 @@ describe("guidebook workflows", () => {
       "Doyles on the Beach",
       "Watsons Bay Boutique Hotel",
       "Osteria Luna",
+      "Mamak — Haymarket",
+      "Chat Thai — Thaitown",
     ]);
     expect(
       searchPlaces(
@@ -189,6 +191,7 @@ describe("guidebook workflows", () => {
       "Luna Park Sydney",
       "Taronga Zoo Sydney",
       "SEA LIFE Sydney Aquarium",
+      "Bicentennial Park",
     ]);
     expect(
       searchPlaces(
